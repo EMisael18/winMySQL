@@ -1,6 +1,6 @@
-﻿namespace winMySQL
+﻿namespace WinMySQL
 {
-    partial class frmMenu
+    partial class FrmMenu
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,71 +29,65 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
-            archivoToolStripMenuItem = new ToolStripMenuItem();
-            salirToolStripMenuItem = new ToolStripMenuItem();
+            alumnoToolStripMenuItem = new ToolStripMenuItem();
             catalogoToolStripMenuItem = new ToolStripMenuItem();
-            materiasToolStripMenuItem = new ToolStripMenuItem();
-            alumnosToolStripMenuItem = new ToolStripMenuItem();
-            profesoresToolStripMenuItem = new ToolStripMenuItem();
+            alumnoToolStripMenuItem1 = new ToolStripMenuItem();
+            materiaToolStripMenuItem = new ToolStripMenuItem();
+            profesorToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, catalogoToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { alumnoToolStripMenuItem, catalogoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 33);
+            menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // archivoToolStripMenuItem
+            // alumnoToolStripMenuItem
             // 
-            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
-            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(88, 29);
-            archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // salirToolStripMenuItem
-            // 
-            salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(270, 34);
-            salirToolStripMenuItem.Text = "Salir";
+            alumnoToolStripMenuItem.Name = "alumnoToolStripMenuItem";
+            alumnoToolStripMenuItem.Size = new Size(60, 20);
+            alumnoToolStripMenuItem.Text = "Archivo";
             // 
             // catalogoToolStripMenuItem
             // 
-            catalogoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { materiasToolStripMenuItem, alumnosToolStripMenuItem, profesoresToolStripMenuItem });
+            catalogoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { alumnoToolStripMenuItem1, materiaToolStripMenuItem, profesorToolStripMenuItem });
             catalogoToolStripMenuItem.Name = "catalogoToolStripMenuItem";
-            catalogoToolStripMenuItem.Size = new Size(100, 29);
+            catalogoToolStripMenuItem.Size = new Size(67, 20);
             catalogoToolStripMenuItem.Text = "Catalogo";
             // 
-            // materiasToolStripMenuItem
+            // alumnoToolStripMenuItem1
             // 
-            materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-            materiasToolStripMenuItem.Size = new Size(270, 34);
-            materiasToolStripMenuItem.Text = "Materias";
+            alumnoToolStripMenuItem1.Name = "alumnoToolStripMenuItem1";
+            alumnoToolStripMenuItem1.Size = new Size(180, 22);
+            alumnoToolStripMenuItem1.Text = "Alumno";
+            alumnoToolStripMenuItem1.Click += alumnoToolStripMenuItem1_Click;
             // 
-            // alumnosToolStripMenuItem
+            // materiaToolStripMenuItem
             // 
-            alumnosToolStripMenuItem.Name = "alumnosToolStripMenuItem";
-            alumnosToolStripMenuItem.Size = new Size(270, 34);
-            alumnosToolStripMenuItem.Text = "Alumnos";
+            materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
+            materiaToolStripMenuItem.Size = new Size(180, 22);
+            materiaToolStripMenuItem.Text = "Materia";
+            materiaToolStripMenuItem.Click += materiaToolStripMenuItem_Click;
             // 
-            // profesoresToolStripMenuItem
+            // profesorToolStripMenuItem
             // 
-            profesoresToolStripMenuItem.Name = "profesoresToolStripMenuItem";
-            profesoresToolStripMenuItem.Size = new Size(270, 34);
-            profesoresToolStripMenuItem.Text = "Profesores";
+            profesorToolStripMenuItem.Name = "profesorToolStripMenuItem";
+            profesorToolStripMenuItem.Size = new Size(180, 22);
+            profesorToolStripMenuItem.Text = "Profesor";
+            profesorToolStripMenuItem.Click += profesorToolStripMenuItem_Click;
             // 
-            // frmMenu
+            // FrmMenu
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "frmMenu";
+            Name = "FrmMenu";
             Text = "Sistema Escolar";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -104,11 +98,10 @@
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem archivoToolStripMenuItem;
-        private ToolStripMenuItem salirToolStripMenuItem;
+        private ToolStripMenuItem alumnoToolStripMenuItem;
         private ToolStripMenuItem catalogoToolStripMenuItem;
-        private ToolStripMenuItem materiasToolStripMenuItem;
-        private ToolStripMenuItem alumnosToolStripMenuItem;
-        private ToolStripMenuItem profesoresToolStripMenuItem;
+        private ToolStripMenuItem alumnoToolStripMenuItem1;
+        private ToolStripMenuItem materiaToolStripMenuItem;
+        private ToolStripMenuItem profesorToolStripMenuItem;
     }
 }

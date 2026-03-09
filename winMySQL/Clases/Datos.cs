@@ -1,38 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace winMySQL.Clases
 {
     internal class Datos
     {
-       String CadenaConexion = "Server=localhost;Database=prueba;Uid=root;Pwd=misaelmontoya";
-        MySqlConnection Conexion;
-        public void conectar()
+        String cadenaConexion = "server=Localhost;user=luis;pwd=joseluis;Database=escolar";
+        MySqlConnection conexion;
+        private void conectar()
         {
             try
             {
-                Conexion = new MySqlConnection(CadenaConexion);
-                Conexion.Open();
+                conexion = new MySqlConnection(cadenaConexion);
+                conexion.Open();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show("Error de conexión: " + ex.Message);
             }
-            
         }
         private void desconectar()
         {
             try
             {
-                Conexion.Close();
+                if (conexion != null)
+                {
+                    conexion.Close();
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+        public DataSet ejecutar(String comando)
+        {
+            try
+            {
+                conectar();
+                MySqlDataAdapter da = new MySqlDataAdapter(comando, conexion);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                return ds;
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+        public bool ejecutarcomando(String comando)
+        {
+            try
+            {
+                conectar();
+                MySqlCommand cmd = new MySqlCommand(comando, conexion);
+                cmd.ExecuteNonQuery();
+                desconectar();
+                return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                desconectar();
+                return false;
             }
         }
-
     }
 }
