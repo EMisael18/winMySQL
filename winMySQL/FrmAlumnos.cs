@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,11 +7,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using winMySQL.Clases;
+using System.IO;
+
+
 
 namespace WinMySQL.Vistas
 {
     public partial class FrmAlumnos : Form
     {
+        OpenFileDialog ofdExcel = new OpenFileDialog();
         Datos datos = new Datos();
         DataSet ds;
         public FrmAlumnos()
@@ -72,7 +77,7 @@ namespace WinMySQL.Vistas
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int idalumno = Convert.ToInt32(dgvAlumnos.CurrentRow.Cells[0].Value);
-            if (MessageBox.Show("Deseas eliminar al alumno: " + dgvAlumnos.CurrentRow.Cells[1].Value.ToString()+" "+ dgvAlumnos.CurrentRow.Cells[2].Value.ToString()+" "+ dgvAlumnos.CurrentRow.Cells[3].Value.ToString(),
+            if (MessageBox.Show("Deseas eliminar al alumno: " + dgvAlumnos.CurrentRow.Cells[1].Value.ToString() + " " + dgvAlumnos.CurrentRow.Cells[2].Value.ToString() + " " + dgvAlumnos.CurrentRow.Cells[3].Value.ToString(),
                 "sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 bool f = datos.ejecutarcomando($"delete from Alumnos where IdAlumnos={idalumno}");
@@ -83,5 +88,40 @@ namespace WinMySQL.Vistas
                 else MessageBox.Show("error al eliminar al alumno", "Sistema");
             }
         }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            string path;
+            DialogResult dr = ofdExcel.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                path = ofdExcel.FileName;
+
+                ExcelPackage.License.SetNonCommercialPersonal("Luis Mota"); //Libreria para uso no comercial
+                using (var package = new ExcelPackage(new FileInfo(path)))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                    int rowCount = worksheet.Dimension.Rows;
+                    int columnCount = worksheet.Dimension.Columns;
+                    DataTable dt = new DataTable();
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        dt.Columns.Add(worksheet.Cells[1, i + 1].Value.ToString());
+                    }
+                    for (int i = 2; i <= rowCount; i++)
+                    {
+                        DataRow drNew = dt.NewRow();
+                        for (int col = 1; col <= columnCount; col++)
+                        {
+                            drNew[col - 1] = worksheet.Cells[i, col].Value.ToString();
+                        }
+                        dt.Rows.Add(drNew);
+                        string comando = $"Insert into Alumnos(Nombre, Apellido) values('{drNew[0]}', '{drNew[1]}')";
+                    }
+                }
+            }
+        }
     }
 }
+
+        
