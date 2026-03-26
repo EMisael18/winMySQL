@@ -112,14 +112,38 @@ namespace WinMySQL.Vistas
                     {
                         DataRow drNew = dt.NewRow();
                         for (int col = 1; col <= columnCount; col++)
-                        {
-                            drNew[col - 1] = worksheet.Cells[i, col].Value.ToString();
-                        }
-                        dt.Rows.Add(drNew);
-                        string comando = $"Insert into Alumnos(Nombre, Apellido) values('{drNew[0]}', '{drNew[1]}')";
+                            if (worksheet.Cells[i, col].Value == null)
+                            {
+                                drNew[col - 1] = "";
+                                continue;
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    drNew[col - 1] = worksheet.Cells[i, col].Value.ToString();
+                                }
+                                catch (Exception ex)
+                                {
+                                    drNew[col - 1] = worksheet.Cells[i, col].Value;
+                                }
+                            }
+                    
+                    dt.Rows.Add(drNew);
+                        string carreraNombre = drNew[5].ToString();
+
+                        DataSet dsCarrera = datos.ejecutar($"SELECT IdCarrera FROM Carreras WHERE Nombre='{carreraNombre}'");
+                        int idCarrera = Convert.ToInt32(dsCarrera.Tables[0].Rows[0][0]);
+
+                        string comando = $"INSERT INTO Alumnos(Nombre, ApellidoPat, ApellidoMat, NumeroControl, Semestre, Carrera) " +
+                                         $"VALUES('{drNew[3]}','{drNew[1]}','{drNew[2]}','{drNew[0]}',{drNew[4]},{idCarrera})";
+
+                        datos.ejecutarcomando(comando);
+
                     }
                 }
             }
+
         }
     }
 }

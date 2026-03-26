@@ -30,7 +30,7 @@ namespace WinMySQL.Vistas
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (updating==false)
+            if (updating == false)
             {
                 bool resultado = datos.ejecutarcomando(
     $"Insert into Materias (Materias,Creditos) " +
@@ -61,6 +61,11 @@ $"where idMaterias={id}");
                     MessageBox.Show("Error al actualizar la materia");
                 }
             }
+        }
+
+        private void FrmMateria_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Imagenes\" />
     <Folder Include="Listas\" />
+    <Folder Include="backups\" />
   </ItemGroup>
 
   <ItemGroup>

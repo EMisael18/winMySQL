@@ -30,13 +30,13 @@
         {
             components = new System.ComponentModel.Container();
             splitContainer1 = new SplitContainer();
+            btnImportar = new Button();
             btnAgregarAlumno = new Button();
             txtMaterias = new TextBox();
             label1 = new Label();
             dgvAlumnos = new DataGridView();
             cmsAlumno = new ContextMenuStrip(components);
             eliminarToolStripMenuItem = new ToolStripMenuItem();
-            btnImportar = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +67,16 @@
             splitContainer1.SplitterDistance = 175;
             splitContainer1.SplitterWidth = 7;
             splitContainer1.TabIndex = 0;
+            // 
+            // btnImportar
+            // 
+            btnImportar.Location = new Point(1015, 115);
+            btnImportar.Name = "btnImportar";
+            btnImportar.Size = new Size(112, 34);
+            btnImportar.TabIndex = 6;
+            btnImportar.Text = "Importar";
+            btnImportar.UseVisualStyleBackColor = true;
+            btnImportar.Click += btnImportar_Click;
             // 
             // btnAgregarAlumno
             // 
@@ -123,16 +133,6 @@
             eliminarToolStripMenuItem.Size = new Size(146, 32);
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
-            // 
-            // btnImportar
-            // 
-            btnImportar.Location = new Point(1015, 115);
-            btnImportar.Name = "btnImportar";
-            btnImportar.Size = new Size(112, 34);
-            btnImportar.TabIndex = 6;
-            btnImportar.Text = "Importar";
-            btnImportar.UseVisualStyleBackColor = true;
-            btnImportar.Click += btnImportar_Click;
             // 
             // FrmAlumnos
             // 

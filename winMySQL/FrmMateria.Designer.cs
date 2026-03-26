@@ -38,40 +38,45 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 3);
+            label1.Location = new Point(30, 5);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(47, 15);
+            label1.Size = new Size(71, 25);
             label1.TabIndex = 0;
             label1.Text = "Materia";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(21, 77);
+            label2.Location = new Point(30, 128);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(95, 15);
+            label2.Size = new Size(143, 25);
             label2.TabIndex = 1;
             label2.Text = "Clave de Materia";
             // 
             // txtMateria
             // 
-            txtMateria.Location = new Point(21, 32);
+            txtMateria.Location = new Point(30, 53);
+            txtMateria.Margin = new Padding(4, 5, 4, 5);
             txtMateria.Name = "txtMateria";
-            txtMateria.Size = new Size(377, 23);
+            txtMateria.Size = new Size(537, 31);
             txtMateria.TabIndex = 2;
             // 
             // txtClaveMateria
             // 
-            txtClaveMateria.Location = new Point(21, 107);
+            txtClaveMateria.Location = new Point(30, 178);
+            txtClaveMateria.Margin = new Padding(4, 5, 4, 5);
             txtClaveMateria.Name = "txtClaveMateria";
-            txtClaveMateria.Size = new Size(251, 23);
+            txtClaveMateria.Size = new Size(357, 31);
             txtClaveMateria.TabIndex = 3;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(323, 106);
+            btnAceptar.Location = new Point(461, 177);
+            btnAceptar.Margin = new Padding(4, 5, 4, 5);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.Size = new Size(107, 38);
             btnAceptar.TabIndex = 4;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -79,16 +84,18 @@
             // 
             // FrmMateria
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(422, 175);
+            ClientSize = new Size(603, 292);
             Controls.Add(btnAceptar);
             Controls.Add(txtClaveMateria);
             Controls.Add(txtMateria);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "FrmMateria";
             Text = "Materia";
+            Load += FrmMateria_Load;
             ResumeLayout(false);
             PerformLayout();
         }

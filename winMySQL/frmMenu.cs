@@ -27,5 +27,10 @@ namespace WinMySQL
             FrmProfesores prof = new FrmProfesores();
             prof.Show();
         }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
